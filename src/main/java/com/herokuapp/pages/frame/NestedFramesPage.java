@@ -1,11 +1,12 @@
-package com.herokuapp.pages;
+package com.herokuapp.pages.frame;
 
+import com.herokuapp.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-public class NestedFramesPage extends BasePage {
+public class NestedFramesPage extends BasePage{
     public NestedFramesPage(WebDriver driver) {
         super(driver);
     }
@@ -61,7 +62,7 @@ public class NestedFramesPage extends BasePage {
     @FindBy(xpath = "/html/body")
     WebElement textInLeftFrame;
 
-    public NestedFramesPage verifyIframeByText(String text) {
+    public NestedFramesPage verifyFrameByText(String text) {
         Assert.assertTrue(shouldHaveText(textInLeftFrame, text, 1));
         return this;
     }

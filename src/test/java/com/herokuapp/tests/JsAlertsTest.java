@@ -1,7 +1,7 @@
 package com.herokuapp.tests;
 
 import com.herokuapp.pages.HomePage;
-import com.herokuapp.pages.JsAlertsPage;
+import com.herokuapp.pages.alert.JsAlertsPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
