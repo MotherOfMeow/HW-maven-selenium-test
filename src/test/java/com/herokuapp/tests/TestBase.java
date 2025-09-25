@@ -13,12 +13,12 @@ public class TestBase {
     @BeforeMethod
     public void init() {
         driver = new ChromeDriver();
-        driver.get("https://demoqa.com");
+        driver.get("https://the-internet.herokuapp.com");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
-    @AfterMethod(enabled = false)
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
