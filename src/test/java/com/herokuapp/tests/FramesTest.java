@@ -1,8 +1,8 @@
 package com.herokuapp.tests;
 
-import com.herokuapp.pages.FramesPage;
+import com.herokuapp.pages.frame.FramesPage;
 import com.herokuapp.pages.HomePage;
-import com.herokuapp.pages.NestedFramesPage;
+import com.herokuapp.pages.frame.NestedFramesPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -15,22 +15,22 @@ public class FramesTest extends  TestBase{
     
     @Test
     public void leftFrameTest() {
-        new NestedFramesPage(driver).switchToLeftFrame().verifyIframeByText("LEFT");
+        new NestedFramesPage(driver).switchToLeftFrame().verifyFrameByText("LEFT");
     }
 
     @Test
     public void middleFrameTest() {
-        new NestedFramesPage(driver).switchToMiddleFrame().verifyIframeByText("MIDDLE");
+        new NestedFramesPage(driver).switchToMiddleFrame().verifyFrameByText("MIDDLE");
     }
 
     @Test
     public void rightFrameTest() {
-        new NestedFramesPage(driver).switchToRightFrame().verifyIframeByText("RIGHT");
+        new NestedFramesPage(driver).switchToRightFrame().verifyFrameByText("RIGHT");
     }
 
     @Test
     public void bottomFrameTest() {
-        new NestedFramesPage(driver).switchToBottomFrame().verifyIframeByText("BOTTOM");
+        new NestedFramesPage(driver).switchToBottomFrame().verifyFrameByText("BOTTOM");
     }
 }
 

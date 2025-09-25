@@ -1,10 +1,11 @@
-package com.herokuapp.pages;
+package com.herokuapp.pages.frame;
 
+import com.herokuapp.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class FramesPage extends BasePage{
+public class FramesPage extends BasePage {
     public FramesPage(WebDriver driver) {
         super(driver);
     }

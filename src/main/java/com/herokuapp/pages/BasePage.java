@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BasePage {
-    WebDriver driver;
+    protected WebDriver driver;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -38,5 +38,10 @@ public class BasePage {
     public boolean shouldHaveText(WebElement element, String text, int time) {
         return new WebDriverWait(driver, Duration.ofSeconds(time))
                 .until(ExpectedConditions.textToBePresentInElement(element, text));
+    }
+
+    public boolean shouldHaveUrl(String url, int time) {
+        return new WebDriverWait(driver, Duration.ofSeconds(time))
+                .until(ExpectedConditions.urlToBe(url));
     }
 }
