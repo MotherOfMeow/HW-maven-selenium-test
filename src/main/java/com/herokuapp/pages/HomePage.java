@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends  BasePage{
+public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -15,6 +15,15 @@ public class HomePage extends  BasePage{
     public JsAlertsPage getJsAlertsPage() {
         clickWithJS(jsAlerts, 0, 400);
 
-        return  new JsAlertsPage(driver);
+        return new JsAlertsPage(driver);
+    }
+
+    @FindBy(xpath = "//a[@href='/frames']")
+    WebElement frames;
+
+    public FramesPage getFramesPage() {
+        click(frames);
+
+        return new FramesPage(driver);
     }
 }
