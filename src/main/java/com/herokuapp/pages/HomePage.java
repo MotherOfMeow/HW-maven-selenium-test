@@ -2,6 +2,7 @@ package com.herokuapp.pages;
 
 import com.herokuapp.pages.alert.JsAlertsPage;
 import com.herokuapp.pages.contextMenu.ContextMenuPage;
+import com.herokuapp.pages.dragAndDrod.DragAndDropPage;
 import com.herokuapp.pages.dropdown.DropdownPage;
 import com.herokuapp.pages.frame.FramesPage;
 import com.herokuapp.pages.hover.HoversPage;
@@ -77,5 +78,14 @@ public class HomePage extends BasePage {
         click(dropdown);
 
         return new DropdownPage(driver);
+    }
+
+    @FindBy(xpath = "//a[@href='/drag_and_drop']")
+    WebElement dragAndDrop;
+
+    public DragAndDropPage getDragAndDropPage() {
+        click(dragAndDrop);
+
+        return new DragAndDropPage(driver);
     }
 }
