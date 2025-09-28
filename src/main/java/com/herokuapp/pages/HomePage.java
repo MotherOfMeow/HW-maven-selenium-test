@@ -2,6 +2,7 @@ package com.herokuapp.pages;
 
 import com.herokuapp.pages.alert.JsAlertsPage;
 import com.herokuapp.pages.contextMenu.ContextMenuPage;
+import com.herokuapp.pages.dropdown.DropdownPage;
 import com.herokuapp.pages.frame.FramesPage;
 import com.herokuapp.pages.hover.HoversPage;
 import com.herokuapp.pages.multipleWindow.MultipleWindowPage;
@@ -67,5 +68,14 @@ public class HomePage extends BasePage {
         click(contextMenu);
 
         return new ContextMenuPage(driver);
+    }
+
+    @FindBy(xpath = "//a[@href='/dropdown']")
+    WebElement dropdown;
+
+    public DropdownPage getDropdownPage() {
+        click(dropdown);
+
+        return new DropdownPage(driver);
     }
 }
