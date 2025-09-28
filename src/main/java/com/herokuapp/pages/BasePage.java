@@ -44,4 +44,12 @@ public class BasePage {
         return new WebDriverWait(driver, Duration.ofSeconds(time))
                 .until(ExpectedConditions.urlToBe(url));
     }
+
+    public void pause(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
