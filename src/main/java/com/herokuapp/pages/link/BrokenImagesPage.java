@@ -1,4 +1,4 @@
-package com.herokuapp.pages.image;
+package com.herokuapp.pages.link;
 
 import com.herokuapp.pages.BasePage;
 import org.openqa.selenium.WebDriver;
