@@ -6,6 +6,8 @@ import com.herokuapp.pages.dragAndDrod.DragAndDropPage;
 import com.herokuapp.pages.dropdown.DropdownPage;
 import com.herokuapp.pages.frame.FramesPage;
 import com.herokuapp.pages.hover.HoversPage;
+import com.herokuapp.pages.link.BrokenImagesPage;
+import com.herokuapp.pages.link.RedirectionPage;
 import com.herokuapp.pages.multipleWindow.MultipleWindowPage;
 import com.herokuapp.pages.slider.HorizontalSlidersPage;
 import org.openqa.selenium.WebDriver;
@@ -87,5 +89,26 @@ public class HomePage extends BasePage {
         click(dragAndDrop);
 
         return new DragAndDropPage(driver);
+    }
+
+    @FindBy(xpath = "//a[@href='/broken_images']")
+    WebElement brokenImages;
+
+    public BrokenImagesPage getBrockenImagesTest() {
+        click(brokenImages);
+
+        return new BrokenImagesPage(driver);
+    }
+
+
+    @FindBy(xpath = "//a[@href='/redirector']")
+    WebElement redirectLink;
+    @FindBy(id = "redirect")
+    WebElement redirect;
+
+    public RedirectionPage getRedirectionPage() {
+        clickWithJS(redirectLink, 0, 800);
+        click(redirect);
+        return new RedirectionPage(driver);
     }
 }

@@ -7,14 +7,20 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.time.Duration;
 
 public class BasePage {
     protected WebDriver driver;
+    public static JavascriptExecutor js;
+    protected URL fullUrl;
+
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+        js = (JavascriptExecutor) driver;
     }
 
     public void click(WebElement element) {
@@ -30,7 +36,6 @@ public class BasePage {
     }
 
     public void clickWithJS(WebElement element, int x, int y) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
         click(element);
     }
@@ -50,6 +55,27 @@ public class BasePage {
             Thread.sleep(millis);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void verifyLinks(String baseUrl, String url) {
+        try {
+            if (url.startsWith("http://") || url.startsWith("https://")) {
+                this.fullUrl = new URL(url);
+            } else {
+                this.fullUrl = new URL(baseUrl + url);
+            }
+            //create URL connection and response code
+            HttpURLConnection connection = (HttpURLConnection) fullUrl.openConnection();
+            connection.setConnectTimeout(10000);
+            connection.connect();
+            if (connection.getResponseCode() >= 400) {
+                System.out.println(fullUrl + " is a broken link - Response message is " + connection.getResponseCode() + " " + connection.getResponseMessage());
+            } else {
+                System.out.println(fullUrl + " - Response message is " + connection.getResponseCode() + " " + connection.getResponseMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(url + " - " + e.getMessage() + "Error occurend");
         }
     }
 }
